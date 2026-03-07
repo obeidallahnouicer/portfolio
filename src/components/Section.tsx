@@ -13,12 +13,12 @@ export default function Section({ id, title, subtitle, children, className = "" 
   return (
     <section
       id={id}
-      className={`py-20 ${className}`}
+      className={`py-12 ${className}`}
       style={{ borderBottom: '1px solid rgba(6,182,212,0.07)' }}
     >
       <div className="max-w-5xl mx-auto px-6">
         {title && (
-          <div className="mb-12">
+          <div className="mb-8">
             <div className="section-accent mb-3">
               <span
                 className="text-xs font-semibold tracking-widest uppercase"
