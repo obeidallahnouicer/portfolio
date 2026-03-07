@@ -2,11 +2,11 @@
 export const PERSONAL_INFO = {
   name: "OBEID ALLAH NOUICER",
   title: "AI Engineer & Financial Analyst",
-  tagline: "Building production-ready Generative AI systems for enterprise banking & finance",
+  tagline: "Building production-ready Generative AI systems",
   email: "onouicer@gmail.com",
   phone: "+216 94 321 758",
-  github: "https://github.com/obeidnouicer",
-  linkedin: "https://linkedin.com/in/obeidnouicer",
+  github: "https://github.com/obeidallahnouicer",
+  linkedin: "https://www.linkedin.com/in/obeid-nouicer-866982218?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   about: "As an AI Engineer and Financial Analyst, I stand at the unique intersection of cutting-edge Generative AI and robust financial operations. My passion lies in crafting and deploying production-ready AI systems that drive efficiency, enhance decision-making, and mitigate risk within the enterprise banking and finance sector. With hands-on experience in LLM development, RAG architectures, and secure AI deployments, I bridge the gap between complex AI models and real-world business challenges, ensuring tangible impact and measurable value."
 };
 
@@ -70,49 +70,50 @@ export const SKILLS = {
   ]
 };
 
-export const PROJECTS = [
+export type ProjectLinks = {
+  github?: string;
+  github2?: string;
+  github3?: string;
+  demo?: string;
+};
+
+export type Project = {
+  title: string;
+  description: string;
+  links: ProjectLinks;
+};
+
+export const PROJECTS: Project[] = [
   {
     title: "EduAI - Educational Platform",
     description: "AI-powered educational platform leveraging LLMs for personalized learning paths and interactive content generation.",
     links: {
-      github: "https://github.com/obeidnouicer/EduAI",
-      demo: "https://obeidallahnouice.underwriter.dev/"
+      github: "https://github.com/obeidallahnouicer/EduAI",
     }
   },
   {
     title: "Resume Optimizer - AI Enhancement Tool",
     description: "An AI-driven tool to optimize resumes using semantic analysis and keyword matching for better job prospects.",
     links: {
-      github: "https://github.com/obeidnouicer/ResumeOptimizer",
-      demo: "https://obeidallahnouice.underwriter.dev/"
+      github: "https://github.com/obeidallahnouicer/resumeoptimiser",
     }
   },
-  {
-    title: "Big Data Analytics",
-    description: "Platform for large-scale data processing and visualization, built for financial market insights.",
-    links: {
-      github: "https://github.com/obeidnouicer/BigDataAnalytics"
-    }
-  },
+
   {
     title: "FixTrade - Trading Analytics",
     description: "Real-time trading analytics system providing insights into market trends and portfolio performance.",
     links: {
-      github: "https://github.com/obeidnouicer/FixTrade"
+      github: "https://github.com/obeidallahnouicer/FixTrade"
     }
   },
+ 
   {
-    title: "BioFront - Biometric Frontend",
-    description: "Frontend application for biometric authentication systems, focusing on user experience and security.",
+    title: "Speed Alert - Real-Time Speed Monitoring",
+    description: "A full-stack IoT system that monitors vehicle speed in real-time and sends live alerts with GPS location and itinerary tracking. Features end-to-end AES encryption, fingerprint biometric authentication, WebSocket live data streaming, and a cross-platform mobile app. Composed of a Node.js backend, a React web dashboard, and a Flutter mobile client.",
     links: {
-      github: "https://github.com/obeidnouicer/BioFront"
-    }
-  },
-  {
-    title: "IoT Suite",
-    description: "A comprehensive full-stack IoT solution including backend, web frontend, and mobile application.",
-    links: {
-      github: "https://github.com/obeidnouicer/nodeiot"
+      github: "https://github.com/obeidallahnouicer/nodeiot",
+      github2: "https://github.com/obeidallahnouicer/iotfront",
+      github3: "https://github.com/obeidallahnouicer/iotflutter"
     }
   }
 ];
@@ -122,13 +123,13 @@ export const EDUCATION = [
     degree: "Master's in Business Analytics & Generative AI",
     institution: "ESPRIT",
     period: "2024 - Present",
-    details: "Specializations: LLMs, RAG, Prompt Engineering, Machine Learning for Business. Honors: GPA 3.9/4.0"
+    details: "Specializations: LLMs, RAG, Prompt Engineering, Machine Learning for Business."
   },
   {
     degree: "Bachelor's in Finance",
     institution: "IHEC Carthage",
     period: "2020 - 2024",
-    details: "Focus: Credit risk, financial analysis, corporate finance. Honors: Magna Cum Laude"
+    details: "Focus: Credit risk, financial analysis, corporate finance."
   }
 ];
 
