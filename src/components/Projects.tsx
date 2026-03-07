@@ -5,15 +5,16 @@ import { ExternalLink } from "lucide-react";
 import { GitHubSVG } from "./BrandIcons";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import { assetUrl } from "../utils";
 
 // Try local image first; fall back to a Pexels stock photo
 const PROJECT_LOCAL_IMAGE: Record<string, string> = {
-  "EduAI - Educational Platform":                   "/images/projects/eduai.jpg",
-  "Resume Optimizer - AI Enhancement Tool":         "/images/projects/resume-optimizer.jpg",
-  "Big Data Analytics":                             "/images/projects/big-data-analytics.jpg",
-  "FixTrade - Trading Analytics":                   "/images/projects/fixtrade.jpg",
-  "BioFront - Biometric Frontend":                  "/images/projects/biofront.jpg",
-  "Speed Alert - Real-Time Speed Monitoring":       "/images/projects/speed-alert.jpg",
+  "EduAI - Educational Platform":                   assetUrl("/images/projects/eduai.jpg"),
+  "Resume Optimizer - AI Enhancement Tool":         assetUrl("/images/projects/resume-optimizer.jpg"),
+  "Big Data Analytics":                             assetUrl("/images/projects/big-data-analytics.jpg"),
+  "FixTrade - Trading Analytics":                   assetUrl("/images/projects/fixtrade.jpg"),
+  "BioFront - Biometric Frontend":                  assetUrl("/images/projects/biofront.jpg"),
+  "Speed Alert - Real-Time Speed Monitoring":       assetUrl("/images/projects/speed-alert.jpg"),
 };
 
 const PROJECT_FALLBACK_IMAGE: Record<string, string> = {

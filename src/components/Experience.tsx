@@ -3,6 +3,7 @@ import { EXPERIENCE } from "../constants";
 import Section from "./Section";
 import GraphTimeline from "./GraphTimeline";
 import { type TimelineNodeData } from "./TimelineNode";
+import { assetUrl } from "../utils";
 
 const COMPANY_COLORS: Record<string, string> = {
   "STB BANK": "#22d3ee",
@@ -11,9 +12,9 @@ const COMPANY_COLORS: Record<string, string> = {
 };
 
 const COMPANY_LOGOS: Record<string, string> = {
-  "STB BANK": "/images/companies/stb-bank.png",
-  "JEMS": "/images/companies/jems.png",
-  "Bank of Tunisia": "/images/companies/bank-of-tunisia.png",
+  "STB BANK": assetUrl("/images/companies/stb-bank.png"),
+  "JEMS": assetUrl("/images/companies/jems.png"),
+  "Bank of Tunisia": assetUrl("/images/companies/bank-of-tunisia.png"),
 };
 
 const COMPANY_ICONS: Record<string, string> = {

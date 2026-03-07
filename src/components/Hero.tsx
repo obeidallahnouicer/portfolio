@@ -3,6 +3,7 @@ import { GitHubSVG, LinkedInSVG } from "./BrandIcons";
 import { motion } from "motion/react";
 import { PERSONAL_INFO } from "../constants";
 import HeroAnimation from "./HeroAnimation";
+import { assetUrl } from "../utils";
 
 const stats = [
   { value: "3+", label: "Years AI Experience" },
@@ -49,7 +50,7 @@ export default function Hero() {
             />
             <div className="w-32 h-32 rounded-full overflow-hidden glow-cyan relative" style={{ border: "2px solid rgba(6,182,212,0.4)" }}>
               <img
-                src="/images/avatar/photo.jpg"
+                src={assetUrl("/images/avatar/photo.jpg")}
                 alt="Obeid Allah Nouicer"
                 className="w-full h-full object-cover object-top"
                 onError={e => {

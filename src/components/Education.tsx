@@ -3,6 +3,7 @@ import { EDUCATION } from "../constants";
 import Section from "./Section";
 import GraphTimeline from "./GraphTimeline";
 import { type TimelineNodeData } from "./TimelineNode";
+import { assetUrl } from "../utils";
 
 const SCHOOL_COLORS: Record<string, string> = {
   "ESPRIT": "#818cf8",
@@ -10,8 +11,8 @@ const SCHOOL_COLORS: Record<string, string> = {
 };
 
 const SCHOOL_LOGOS: Record<string, string> = {
-  "ESPRIT": "/images/universities/esprit.png",
-  "IHEC Carthage": "/images/universities/ihec-carthage.png",
+  "ESPRIT": assetUrl("/images/universities/esprit.png"),
+  "IHEC Carthage": assetUrl("/images/universities/ihec-carthage.png"),
 };
 
 const SCHOOL_ICONS: Record<string, string> = {
