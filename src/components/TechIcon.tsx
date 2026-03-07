@@ -145,41 +145,117 @@ function AzureIcon({ s }: Readonly<{ s: number }>) {
 }
 
 function LangChainIcon({ s }: Readonly<{ s: number }>) {
-  // LangChain doesn't have a widely-known SVG — use a styled chain link
+  // LangChain official logo: interlocking chain links in their teal/green brand color
   return (
     <svg viewBox="0 0 128 128" width={s} height={s}>
-      <rect width="128" height="128" rx="20" fill="#1c3553" />
-      <text x="64" y="80" textAnchor="middle" fontSize="52" fontFamily="monospace" fill="#22d3ee">⛓</text>
+      <rect width="128" height="128" rx="18" fill="#0f1f2e" />
+      {/* Left link */}
+      <rect x="12" y="44" width="44" height="20" rx="10" fill="none" stroke="#1dd1a1" strokeWidth="7" />
+      {/* Right link — offset, interlocking */}
+      <rect x="72" y="64" width="44" height="20" rx="10" fill="none" stroke="#1dd1a1" strokeWidth="7" />
+      {/* Connector bar */}
+      <line x1="56" y1="54" x2="72" y2="74" stroke="#1dd1a1" strokeWidth="7" strokeLinecap="round" />
     </svg>
   );
 }
 
 function TensorFlow({ s }: Readonly<{ s: number }>) {
+  // TensorFlow official logo — the "T" flow mark with correct orange gradient
   return (
     <svg viewBox="0 0 128 128" width={s} height={s}>
-      <path fill="#FF6F00" d="M64 0L6.4 32v64L64 128l57.6-32V32z" />
-      <path fill="#FFA000" d="M64 0v128l57.6-32V32z" />
-      <path fill="#fff" d="M64 32L35.2 48v30l14.4 8V64l14.4-8V32zm0 0l28.8 16v30l-14.4 8V64L64 56V32z" />
+      <defs>
+        <linearGradient id="tf1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#FF8F00" />
+          <stop offset="1" stopColor="#FF6F00" />
+        </linearGradient>
+      </defs>
+      {/* Left dark half */}
+      <path fill="#FF6F00" d="M64 10L18 36v56l46 26V10z" />
+      {/* Right lighter half */}
+      <path fill="url(#tf1)" d="M64 10l46 26v56L64 118V10z" />
+      {/* White T-flow mark */}
+      {/* Top bar */}
+      <rect x="38" y="38" width="52" height="10" rx="2" fill="#fff" />
+      {/* Vertical drop left */}
+      <rect x="43" y="48" width="10" height="20" rx="2" fill="#fff" />
+      {/* Bottom cross */}
+      <rect x="38" y="68" width="52" height="10" rx="2" fill="#fff" />
+      {/* Vertical drop right */}
+      <rect x="75" y="78" width="10" height="18" rx="2" fill="#fff" />
     </svg>
   );
 }
 
 function PyTorch({ s }: Readonly<{ s: number }>) {
+  // PyTorch official flame logo — orange flame with white dot (their actual mark)
   return (
     <svg viewBox="0 0 128 128" width={s} height={s}>
-      <path fill="#ee4c2c" d="M64 14.2c-27.6 0-50 22.4-50 50s22.4 50 50 50 50-22.4 50-50-22.4-50-50-50zm0 89.4c-21.8 0-39.4-17.7-39.4-39.4 0-21.8 17.7-39.4 39.4-39.4 21.8 0 39.4 17.7 39.4 39.4 0 21.8-17.7 39.4-39.4 39.4z" />
-      <circle fill="#ee4c2c" cx="82.5" cy="28.5" r="6.5" />
+      <defs>
+        <linearGradient id="pt1" x1="0.3" y1="0" x2="0.7" y2="1">
+          <stop offset="0" stopColor="#EE4C2C" />
+          <stop offset="1" stopColor="#F8A000" />
+        </linearGradient>
+      </defs>
+      {/* Main flame body */}
+      <path
+        fill="url(#pt1)"
+        d="M64 10
+           C64 10 90 28 90 55
+           C90 70 84 78 78 84
+           C72 90 72 96 72 100
+           C72 108 66 118 64 118
+           C62 118 56 108 56 100
+           C56 96 56 90 50 84
+           C44 78 38 70 38 55
+           C38 28 64 10 64 10Z"
+      />
+      {/* Inner highlight — lighter core */}
+      <path
+        fill="#F8A000"
+        opacity="0.6"
+        d="M64 26
+           C64 26 80 40 80 58
+           C80 70 74 78 70 84
+           C68 88 68 94 67 100
+           C65 106 64 110 64 110
+           C64 110 58 100 60 90
+           C62 82 66 76 68 70
+           C70 64 70 56 64 44
+           C62 38 62 30 64 26Z"
+      />
+      {/* White dot — PyTorch signature */}
+      <circle cx="77" cy="38" r="9" fill="#fff" />
     </svg>
   );
 }
 
 function ScikitLearn({ s }: Readonly<{ s: number }>) {
+  // Scikit-learn logo — orange circle with the characteristic "sk" bicycle wheel spokes mark
   return (
     <svg viewBox="0 0 128 128" width={s} height={s}>
-      <circle cx="64" cy="64" r="60" fill="#f89939" />
-      <path fill="#fff" d="M40 50c13-8 28-8 40 0 6 4 8 10 8 16v16c0 4-3 7-8 7H48c-5 0-8-3-8-7V66c0-6 2-12 8-16z" />
-      <circle cx="52" cy="68" r="6" fill="#f89939" />
-      <circle cx="76" cy="68" r="6" fill="#f89939" />
+      <defs>
+        <linearGradient id="sk1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#F7931E" />
+          <stop offset="1" stopColor="#E86E00" />
+        </linearGradient>
+      </defs>
+      {/* Outer ring */}
+      <circle cx="64" cy="64" r="58" fill="url(#sk1)" />
+      <circle cx="64" cy="64" r="50" fill="#fff" />
+      {/* Inner rings — bicycle wheel style */}
+      <circle cx="64" cy="64" r="36" fill="none" stroke="#F7931E" strokeWidth="5" />
+      <circle cx="64" cy="64" r="16" fill="none" stroke="#F7931E" strokeWidth="5" />
+      {/* Spokes */}
+      <line x1="64" y1="28" x2="64" y2="14" stroke="#F7931E" strokeWidth="5" strokeLinecap="round" />
+      <line x1="64" y1="100" x2="64" y2="114" stroke="#F7931E" strokeWidth="5" strokeLinecap="round" />
+      <line x1="28" y1="64" x2="14" y2="64" stroke="#F7931E" strokeWidth="5" strokeLinecap="round" />
+      <line x1="100" y1="64" x2="114" y2="64" stroke="#F7931E" strokeWidth="5" strokeLinecap="round" />
+      <line x1="38.7" y1="38.7" x2="28.3" y2="28.3" stroke="#F7931E" strokeWidth="5" strokeLinecap="round" />
+      <line x1="89.3" y1="89.3" x2="99.7" y2="99.7" stroke="#F7931E" strokeWidth="5" strokeLinecap="round" />
+      <line x1="89.3" y1="38.7" x2="99.7" y2="28.3" stroke="#F7931E" strokeWidth="5" strokeLinecap="round" />
+      <line x1="38.7" y1="89.3" x2="28.3" y2="99.7" stroke="#F7931E" strokeWidth="5" strokeLinecap="round" />
+      {/* Hub */}
+      <circle cx="64" cy="64" r="8" fill="#F7931E" />
     </svg>
   );
 }
@@ -189,6 +265,233 @@ function KubernetesIcon({ s }: Readonly<{ s: number }>) {
     <svg viewBox="0 0 128 128" width={s} height={s}>
       <path fill="#326CE5" d="M64 8L12 38v52l52 30 52-30V38z" />
       <path fill="#fff" d="M64 24l-28 16v32l28 16 28-16V40zM52 58V48l12-7 12 7v10l-12 7z" />
+    </svg>
+  );
+}
+
+// ─── AI Concepts ─────────────────────────────────────────────────────────────
+
+function GenAIIcon({ s }: Readonly<{ s: number }>) {
+  // Stylised brain with a neural spark — represents Generative AI
+  return (
+    <svg viewBox="0 0 128 128" width={s} height={s}>
+      <defs>
+        <radialGradient id="gai1" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#a78bfa" />
+          <stop offset="1" stopColor="#6d28d9" />
+        </radialGradient>
+      </defs>
+      <circle cx="64" cy="64" r="58" fill="url(#gai1)" opacity="0.15" />
+      {/* Brain left lobe */}
+      <path fill="none" stroke="#a78bfa" strokeWidth="5" strokeLinecap="round"
+        d="M44 80 C28 76 24 62 30 52 C34 44 42 40 50 44 C50 36 56 28 64 28 C72 28 78 36 78 44 C86 40 94 44 98 52 C104 62 100 76 84 80" />
+      {/* Center divide */}
+      <line x1="64" y1="28" x2="64" y2="86" stroke="#a78bfa" strokeWidth="3" strokeDasharray="4 3" />
+      {/* Neural connections */}
+      <circle cx="42" cy="58" r="4" fill="#c4b5fd" />
+      <circle cx="64" cy="50" r="4" fill="#c4b5fd" />
+      <circle cx="86" cy="58" r="4" fill="#c4b5fd" />
+      <circle cx="50" cy="72" r="4" fill="#c4b5fd" />
+      <circle cx="78" cy="72" r="4" fill="#c4b5fd" />
+      <line x1="42" y1="58" x2="64" y2="50" stroke="#c4b5fd" strokeWidth="2" opacity="0.7" />
+      <line x1="64" y1="50" x2="86" y2="58" stroke="#c4b5fd" strokeWidth="2" opacity="0.7" />
+      <line x1="42" y1="58" x2="50" y2="72" stroke="#c4b5fd" strokeWidth="2" opacity="0.7" />
+      <line x1="86" y1="58" x2="78" y2="72" stroke="#c4b5fd" strokeWidth="2" opacity="0.7" />
+      <line x1="50" y1="72" x2="64" y2="50" stroke="#c4b5fd" strokeWidth="2" opacity="0.7" />
+      <line x1="78" y1="72" x2="64" y2="50" stroke="#c4b5fd" strokeWidth="2" opacity="0.7" />
+      {/* Spark / generate symbol */}
+      <path fill="#e9d5ff" d="M60 90 L68 100 L64 96 L72 108 L64 98 L60 106 L64 96 L56 108 L64 98 Z" />
+    </svg>
+  );
+}
+
+function LLMIcon({ s }: Readonly<{ s: number }>) {
+  // LLMs & RAG — stacked token blocks feeding into a knowledge cylinder (RAG metaphor)
+  return (
+    <svg viewBox="0 0 128 128" width={s} height={s}>
+      <defs>
+        <linearGradient id="llm1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#22d3ee" />
+          <stop offset="1" stopColor="#0891b2" />
+        </linearGradient>
+      </defs>
+      {/* Knowledge base cylinder (RAG) */}
+      <ellipse cx="64" cy="96" rx="30" ry="8" fill="#0891b2" opacity="0.4" />
+      <rect x="34" y="78" width="60" height="18" rx="2" fill="#0891b2" opacity="0.3" />
+      <ellipse cx="64" cy="78" rx="30" ry="8" fill="url(#llm1)" />
+      {/* Token blocks (LLM input) */}
+      <rect x="18" y="38" width="22" height="12" rx="4" fill="#22d3ee" opacity="0.9" />
+      <rect x="46" y="38" width="22" height="12" rx="4" fill="#22d3ee" opacity="0.7" />
+      <rect x="74" y="38" width="22" height="12" rx="4" fill="#22d3ee" opacity="0.5" />
+      {/* Attention arrows flowing down */}
+      <path fill="none" stroke="#22d3ee" strokeWidth="2.5" strokeLinecap="round"
+        d="M29 50 Q29 64 48 72" />
+      <path fill="none" stroke="#22d3ee" strokeWidth="2.5" strokeLinecap="round"
+        d="M57 50 Q57 60 57 70" />
+      <path fill="none" stroke="#22d3ee" strokeWidth="2.5" strokeLinecap="round"
+        d="M85 50 Q85 64 76 72" />
+      <polygon points="46,70 50,76 52,68" fill="#22d3ee" />
+      <polygon points="55,68 59,68 57,74" fill="#22d3ee" />
+      <polygon points="74,70 78,68 74,76" fill="#22d3ee" />
+      {/* Label */}
+      <text x="64" y="22" textAnchor="middle" fontSize="12" fontFamily="JetBrains Mono, monospace"
+        fontWeight="700" fill="#67e8f9">LLM + RAG</text>
+    </svg>
+  );
+}
+
+function GuardrailsIcon({ s }: Readonly<{ s: number }>) {
+  // Shield with a checkmark + fence bars — AI safety guardrails
+  return (
+    <svg viewBox="0 0 128 128" width={s} height={s}>
+      <defs>
+        <linearGradient id="gr1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#34d399" />
+          <stop offset="1" stopColor="#059669" />
+        </linearGradient>
+      </defs>
+      {/* Shield body */}
+      <path fill="url(#gr1)" opacity="0.2"
+        d="M64 12 L104 30 L104 66 Q104 96 64 116 Q24 96 24 66 L24 30 Z" />
+      <path fill="none" stroke="#34d399" strokeWidth="5" strokeLinejoin="round"
+        d="M64 12 L104 30 L104 66 Q104 96 64 116 Q24 96 24 66 L24 30 Z" />
+      {/* Fence bars inside shield */}
+      <line x1="44" y1="46" x2="44" y2="80" stroke="#34d399" strokeWidth="4" strokeLinecap="round" opacity="0.7" />
+      <line x1="56" y1="42" x2="56" y2="84" stroke="#34d399" strokeWidth="4" strokeLinecap="round" opacity="0.7" />
+      <line x1="68" y1="42" x2="68" y2="84" stroke="#34d399" strokeWidth="4" strokeLinecap="round" opacity="0.7" />
+      <line x1="80" y1="46" x2="80" y2="80" stroke="#34d399" strokeWidth="4" strokeLinecap="round" opacity="0.7" />
+      {/* Horizontal rails */}
+      <line x1="38" y1="52" x2="86" y2="52" stroke="#34d399" strokeWidth="4" strokeLinecap="round" />
+      <line x1="38" y1="74" x2="86" y2="74" stroke="#34d399" strokeWidth="4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function PromptEngIcon({ s }: Readonly<{ s: number }>) {
+  // Terminal prompt cursor + wrench — Prompt Engineering
+  return (
+    <svg viewBox="0 0 128 128" width={s} height={s}>
+      <defs>
+        <linearGradient id="pe1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#f472b6" />
+          <stop offset="1" stopColor="#db2777" />
+        </linearGradient>
+      </defs>
+      {/* Terminal window */}
+      <rect x="10" y="20" width="108" height="78" rx="10" fill="#0f1923" />
+      <rect x="10" y="20" width="108" height="20" rx="10" fill="url(#pe1)" opacity="0.8" />
+      {/* Traffic lights */}
+      <circle cx="28" cy="30" r="4" fill="#ff5f57" />
+      <circle cx="42" cy="30" r="4" fill="#febc2e" />
+      <circle cx="56" cy="30" r="4" fill="#28c840" />
+      {/* Prompt line: "> _" */}
+      <text x="22" y="62" fontSize="20" fontFamily="JetBrains Mono, monospace"
+        fontWeight="700" fill="#f472b6">{">"}</text>
+      <text x="40" y="62" fontSize="16" fontFamily="JetBrains Mono, monospace"
+        fill="#f9a8d4">prompt</text>
+      {/* Blinking cursor block */}
+      <rect x="102" y="48" width="10" height="18" rx="2" fill="#f472b6" opacity="0.9" />
+      {/* Second line faded */}
+      <text x="22" y="82" fontSize="13" fontFamily="JetBrains Mono, monospace"
+        fill="#6b7280">few-shot · chain-of-thought</text>
+    </svg>
+  );
+}
+
+// ─── Finance Icons ─────────────────────────────────────────────────────────────
+
+function CreditAnalysisIcon({ s }: Readonly<{ s: number }>) {
+  // Credit scorecard / gauge with a tick — Credit Analysis
+  return (
+    <svg viewBox="0 0 128 128" width={s} height={s}>
+      <defs>
+        <linearGradient id="ca1" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stopColor="#f87171" />
+          <stop offset="0.5" stopColor="#fbbf24" />
+          <stop offset="1" stopColor="#34d399" />
+        </linearGradient>
+      </defs>
+      {/* Gauge arc background */}
+      <path fill="none" stroke="#1e293b" strokeWidth="12"
+        d="M 20 90 A 46 46 0 0 1 108 90" strokeLinecap="round" />
+      {/* Gauge arc coloured */}
+      <path fill="none" stroke="url(#ca1)" strokeWidth="12"
+        d="M 20 90 A 46 46 0 0 1 108 90" strokeLinecap="round"
+        strokeDasharray="145" strokeDashoffset="36" />
+      {/* Needle pointing to ~75% (good credit) */}
+      <line x1="64" y1="90" x2="98" y2="52" stroke="#f1f5f9" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="64" cy="90" r="6" fill="#f1f5f9" />
+      {/* Score label */}
+      <text x="64" y="116" textAnchor="middle" fontSize="14" fontFamily="Syne, sans-serif"
+        fontWeight="700" fill="#34d399">CREDIT</text>
+      {/* Tick marks */}
+      <line x1="20" y1="90" x2="26" y2="80" stroke="#64748b" strokeWidth="2" />
+      <line x1="64" y1="44" x2="64" y2="54" stroke="#64748b" strokeWidth="2" />
+      <line x1="108" y1="90" x2="102" y2="80" stroke="#64748b" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function FinModelingIcon({ s }: Readonly<{ s: number }>) {
+  // Candlestick chart with upward trend line — Financial Modeling
+  return (
+    <svg viewBox="0 0 128 128" width={s} height={s}>
+      <defs>
+        <linearGradient id="fm1" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stopColor="#fb923c" />
+          <stop offset="1" stopColor="#fde68a" />
+        </linearGradient>
+      </defs>
+      {/* Grid lines */}
+      <line x1="16" y1="30" x2="116" y2="30" stroke="#1e293b" strokeWidth="1" />
+      <line x1="16" y1="55" x2="116" y2="55" stroke="#1e293b" strokeWidth="1" />
+      <line x1="16" y1="80" x2="116" y2="80" stroke="#1e293b" strokeWidth="1" />
+      <line x1="16" y1="105" x2="116" y2="105" stroke="#1e293b" strokeWidth="1" />
+      {/* Candle 1 — bearish (red) */}
+      <line x1="28" y1="42" x2="28" y2="95" stroke="#f87171" strokeWidth="2" />
+      <rect x="22" y="52" width="12" height="30" rx="2" fill="#f87171" />
+      {/* Candle 2 — bullish (green) */}
+      <line x1="52" y1="38" x2="52" y2="88" stroke="#34d399" strokeWidth="2" />
+      <rect x="46" y="48" width="12" height="28" rx="2" fill="#34d399" />
+      {/* Candle 3 — bullish */}
+      <line x1="76" y1="30" x2="76" y2="74" stroke="#34d399" strokeWidth="2" />
+      <rect x="70" y="36" width="12" height="26" rx="2" fill="#34d399" />
+      {/* Candle 4 — bullish */}
+      <line x1="100" y1="20" x2="100" y2="60" stroke="#34d399" strokeWidth="2" />
+      <rect x="94" y="24" width="12" height="22" rx="2" fill="#34d399" />
+      {/* Trend line */}
+      <path fill="none" stroke="url(#fm1)" strokeWidth="3" strokeLinecap="round"
+        d="M 22 90 Q 52 68 76 52 T 110 26" />
+      {/* Arrow tip */}
+      <polygon points="110,20 118,28 106,30" fill="#fde68a" />
+    </svg>
+  );
+}
+
+function RiskMgmtIcon({ s }: Readonly<{ s: number }>) {
+  // Heat-map matrix (3×3 red-amber-green squares) — Risk Management
+  return (
+    <svg viewBox="0 0 128 128" width={s} height={s}>
+      {/* Label axes */}
+      <text x="8" y="14" fontSize="9" fontFamily="Inter, sans-serif" fill="#64748b">IMPACT →</text>
+      <text x="4" y="110" fontSize="9" fontFamily="Inter, sans-serif" fill="#64748b"
+        transform="rotate(-90,8,90)">PROB.</text>
+      {/* 3×3 risk matrix cells */}
+      {/* Row 3 (high prob) — left to right: yellow, orange, red */}
+      <rect x="26" y="26" width="28" height="28" rx="4" fill="#fbbf24" opacity="0.85" />
+      <rect x="62" y="26" width="28" height="28" rx="4" fill="#f97316" opacity="0.85" />
+      <rect x="98" y="26" width="28" height="28" rx="4" fill="#ef4444" opacity="0.85" />
+      {/* Row 2 — green, yellow, orange */}
+      <rect x="26" y="62" width="28" height="28" rx="4" fill="#34d399" opacity="0.85" />
+      <rect x="62" y="62" width="28" height="28" rx="4" fill="#fbbf24" opacity="0.85" />
+      <rect x="98" y="62" width="28" height="28" rx="4" fill="#f97316" opacity="0.85" />
+      {/* Row 1 (low prob) — green, green, yellow */}
+      <rect x="26" y="98" width="28" height="28" rx="4" fill="#34d399" opacity="0.85" />
+      <rect x="62" y="98" width="28" height="28" rx="4" fill="#34d399" opacity="0.85" />
+      <rect x="98" y="98" width="28" height="28" rx="4" fill="#fbbf24" opacity="0.85" />
+      {/* Diagonal emphasis stroke */}
+      <path fill="none" stroke="#f1f5f9" strokeWidth="2.5" strokeDasharray="5 3" opacity="0.4"
+        d="M 26 54 L 90 26" />
     </svg>
   );
 }
@@ -219,24 +522,40 @@ function InitialsBadge({ name, size, accent }: Readonly<{ name: string; size: nu
 
 // ─── Icon map ────────────────────────────────────────────────────────────────
 const ICON_MAP: Record<string, (s: number) => ReactElement> = {
-  python:       s => <Python s={s} />,
-  docker:       s => <Docker s={s} />,
-  react:        s => <ReactIcon s={s} />,
-  javascript:   s => <JavaScript s={s} />,
-  typescript:   s => <TypeScript s={s} />,
-  fastapi:      s => <FastAPI s={s} />,
-  flask:        s => <Flask s={s} />,
-  postgresql:   s => <PostgreSQL s={s} />,
-  nodejs:       s => <NodeJS s={s} />,
-  "node.js":    s => <NodeJS s={s} />,
-  gitlab:       s => <GitLabIcon s={s} />,
-  "gitlab ci":  s => <GitLabIcon s={s} />,
-  azure:        s => <AzureIcon s={s} />,
-  langchain:    s => <LangChainIcon s={s} />,
-  tensorflow:   s => <TensorFlow s={s} />,
-  pytorch:      s => <PyTorch s={s} />,
-  "scikit-learn": s => <ScikitLearn s={s} />,
-  kubernetes:   s => <KubernetesIcon s={s} />,
+  python:             s => <Python s={s} />,
+  docker:             s => <Docker s={s} />,
+  react:              s => <ReactIcon s={s} />,
+  javascript:         s => <JavaScript s={s} />,
+  typescript:         s => <TypeScript s={s} />,
+  fastapi:            s => <FastAPI s={s} />,
+  flask:              s => <Flask s={s} />,
+  postgresql:         s => <PostgreSQL s={s} />,
+  nodejs:             s => <NodeJS s={s} />,
+  "node.js":          s => <NodeJS s={s} />,
+  gitlab:             s => <GitLabIcon s={s} />,
+  "gitlab ci":        s => <GitLabIcon s={s} />,
+  azure:              s => <AzureIcon s={s} />,
+  langchain:          s => <LangChainIcon s={s} />,
+  tensorflow:         s => <TensorFlow s={s} />,
+  pytorch:            s => <PyTorch s={s} />,
+  "scikit-learn":     s => <ScikitLearn s={s} />,
+  "scikit learn":     s => <ScikitLearn s={s} />,
+  kubernetes:         s => <KubernetesIcon s={s} />,
+  // AI concepts
+  "gen ai":           s => <GenAIIcon s={s} />,
+  "generative ai":    s => <GenAIIcon s={s} />,
+  "llms & rag":       s => <LLMIcon s={s} />,
+  "llms":             s => <LLMIcon s={s} />,
+  "rag":              s => <LLMIcon s={s} />,
+  "guardrails":       s => <GuardrailsIcon s={s} />,
+  "prompt eng":       s => <PromptEngIcon s={s} />,
+  "prompt engineering": s => <PromptEngIcon s={s} />,
+  // Finance
+  "credit analysis":  s => <CreditAnalysisIcon s={s} />,
+  "fin modeling":     s => <FinModelingIcon s={s} />,
+  "financial modeling": s => <FinModelingIcon s={s} />,
+  "risk mgmt":        s => <RiskMgmtIcon s={s} />,
+  "risk management":  s => <RiskMgmtIcon s={s} />,
 };
 
 // ─── Public export ────────────────────────────────────────────────────────────
