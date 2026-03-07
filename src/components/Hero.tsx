@@ -7,7 +7,6 @@ import HeroAnimation from "./HeroAnimation";
 const stats = [
   { value: "3+", label: "Years AI Experience" },
   { value: "5+", label: "Enterprise Projects" },
-  { value: "GPA 3.9", label: "Academic Excellence" },
 ];
 
 const container = {
@@ -23,7 +22,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] flex flex-col items-center justify-center pt-10 pb-16 overflow-hidden"
+      className="relative min-h-[88vh] flex flex-col items-center justify-center pt-8 pb-10 overflow-hidden"
       style={{ borderBottom: "1px solid rgba(6,182,212,0.1)" }}
     >
       <HeroAnimation />
@@ -41,18 +40,18 @@ export default function Hero() {
         animate="show"
       >
         {/* Avatar */}
-        <motion.div className="flex justify-center mb-7" variants={fadeUp}>
+        <motion.div className="flex justify-center mb-6" variants={fadeUp}>
           <div className="relative float">
             {/* Outer glow ring */}
             <div
-              className="absolute -inset-2 rounded-2xl opacity-50 pointer-events-none"
-              style={{ background: "radial-gradient(ellipse, rgba(6,182,212,0.35) 0%, transparent 70%)", filter: "blur(10px)" }}
+              className="absolute -inset-2 rounded-full opacity-50 pointer-events-none"
+              style={{ background: "radial-gradient(ellipse, rgba(6,182,212,0.35) 0%, transparent 70%)", filter: "blur(12px)" }}
             />
-            <div className="w-24 h-24 rounded-2xl overflow-hidden glow-cyan relative" style={{ border: "2px solid rgba(6,182,212,0.4)" }}>
+            <div className="w-32 h-32 rounded-full overflow-hidden glow-cyan relative" style={{ border: "2px solid rgba(6,182,212,0.4)" }}>
               <img
                 src="/images/avatar/photo.jpg"
                 alt="Obeid Allah Nouicer"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
                 onError={e => {
                   const img = e.currentTarget;
                   img.style.display = "none";
@@ -72,7 +71,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Badge */}
-        <motion.div className="flex justify-center mb-5" variants={fadeUp}>
+        <motion.div className="flex justify-center mb-4" variants={fadeUp}>
           <span
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase"
             style={{ background: "linear-gradient(135deg, rgba(6,182,212,0.12), rgba(129,140,248,0.12))", border: "1px solid rgba(6,182,212,0.25)", color: "#22d3ee" }}
@@ -84,26 +83,26 @@ export default function Hero() {
 
         {/* Name */}
         <motion.h1
-          className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-5 leading-none tracking-tight"
+          className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-none tracking-tight"
           style={{ fontFamily: "Syne, Inter, sans-serif", color: "#f1f5f9" }}
           variants={fadeUp}
         >
-          {PERSONAL_INFO.name.split(" ").map((word) =>
+          {PERSONAL_INFO.name.split(" ").map((word, i, arr) =>
             word === "OBEID" ? (
-              <span key={word} className="text-gradient">{word} </span>
+              <span key={word} className="text-gradient">{word}{i < arr.length - 1 ? " " : ""}</span>
             ) : (
-              <span key={word}>{word} </span>
+              <span key={word}>{word}{i < arr.length - 1 ? " " : ""}</span>
             )
           )}
         </motion.h1>
 
         {/* Tagline */}
-        <motion.p className="text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed" style={{ color: "#94a3b8" }} variants={fadeUp}>
+        <motion.p className="text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed" style={{ color: "#94a3b8" }} variants={fadeUp}>
           {PERSONAL_INFO.tagline}
         </motion.p>
 
         {/* Chips */}
-        <motion.div className="flex flex-wrap items-center justify-center gap-3 mb-10" variants={fadeUp}>
+        <motion.div className="flex flex-wrap items-center justify-center gap-3 mb-7" variants={fadeUp}>
           {[
             { icon: <MapPin size={11} style={{ color: "#22d3ee" }} />, label: "Tunis, Tunisia", href: undefined },
             { icon: <Mail size={11} style={{ color: "#22d3ee" }} />, label: PERSONAL_INFO.email, href: `mailto:${PERSONAL_INFO.email}` },
@@ -125,7 +124,7 @@ export default function Hero() {
         </motion.div>
 
         {/* CTAs */}
-        <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14" variants={fadeUp}>
+        <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8" variants={fadeUp}>
           <a href="#contact"
             className="group flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm transition-all duration-200"
             style={{ background: "linear-gradient(135deg, #06b6d4, #818cf8)", color: "#020b18", boxShadow: "0 0 20px rgba(6,182,212,0.3)" }}
@@ -154,7 +153,7 @@ export default function Hero() {
 
         {/* Stats */}
         <motion.div
-          className="inline-grid grid-cols-3 rounded-2xl overflow-hidden"
+          className="inline-grid grid-cols-2 rounded-2xl overflow-hidden"
           style={{ backgroundColor: "rgba(10,22,40,0.6)", border: "1px solid rgba(6,182,212,0.12)" }}
           variants={fadeUp}
         >
