@@ -61,8 +61,8 @@ export default function TimelineNode({ data, index, isLast }: Readonly<TimelineN
                 <img
                   src={data.logoSrc}
                   alt={data.subtitle}
-                  className="flex-shrink-0 object-contain rounded"
-                  style={{ width: 28, height: 28, background: "rgba(255,255,255,0.05)", padding: 2 }}
+                  className="flex-shrink-0 object-contain rounded-md"
+                  style={{ width: 36, height: 36, background: "rgba(255,255,255,0.08)", padding: 4 }}
                   onError={e => {
                     e.currentTarget.style.display = "none";
                     const sib = e.currentTarget.nextElementSibling as HTMLElement | null;
@@ -73,7 +73,7 @@ export default function TimelineNode({ data, index, isLast }: Readonly<TimelineN
               {/* Emoji fallback (also shown when logo fails) */}
               {data.icon && (
                 <span
-                  className="text-lg flex-shrink-0"
+                  className="text-xl flex-shrink-0"
                   style={{ display: data.logoSrc ? "none" : "inline" }}
                 >
                   {data.icon}
