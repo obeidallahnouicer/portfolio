@@ -8,30 +8,30 @@ import { useRef } from "react";
 
 // Try local image first; fall back to a Pexels stock photo
 const PROJECT_LOCAL_IMAGE: Record<string, string> = {
-  "EduAI - Educational Platform":             "/images/projects/eduai.jpg",
-  "Resume Optimizer - AI Enhancement Tool":   "/images/projects/resume-optimizer.jpg",
-  "Big Data Analytics":                       "/images/projects/big-data-analytics.jpg",
-  "FixTrade - Trading Analytics":             "/images/projects/fixtrade.jpg",
-  "BioFront - Biometric Frontend":            "/images/projects/biofront.jpg",
-  "IoT Suite":                                "/images/projects/iot-suite.jpg",
+  "EduAI - Educational Platform":                   "/images/projects/eduai.jpg",
+  "Resume Optimizer - AI Enhancement Tool":         "/images/projects/resume-optimizer.jpg",
+  "Big Data Analytics":                             "/images/projects/big-data-analytics.jpg",
+  "FixTrade - Trading Analytics":                   "/images/projects/fixtrade.jpg",
+  "BioFront - Biometric Frontend":                  "/images/projects/biofront.jpg",
+  "Speed Alert - Real-Time Speed Monitoring":       "/images/projects/speed-alert.jpg",
 };
 
 const PROJECT_FALLBACK_IMAGE: Record<string, string> = {
-  "EduAI - Educational Platform":           "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "Resume Optimizer - AI Enhancement Tool": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "Big Data Analytics":                     "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "FixTrade - Trading Analytics":           "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "BioFront - Biometric Frontend":          "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "IoT Suite":                              "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "EduAI - Educational Platform":                   "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "Resume Optimizer - AI Enhancement Tool":         "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "Big Data Analytics":                             "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "FixTrade - Trading Analytics":                   "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "BioFront - Biometric Frontend":                  "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "Speed Alert - Real-Time Speed Monitoring":       "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&w=800",
 };
 
 const PROJECT_TAGS: Record<string, string[]> = {
-  "EduAI - Educational Platform":           ["Python", "LangChain", "Flask", "PostgreSQL"],
-  "Resume Optimizer - AI Enhancement Tool": ["Python", "NLP", "FastAPI", "React"],
-  "Big Data Analytics":                     ["Python", "Spark", "Kafka"],
-  "FixTrade - Trading Analytics":           ["Python", "Pandas", "Flask"],
-  "BioFront - Biometric Frontend":          ["JavaScript", "React", "Node.js"],
-  "IoT Suite":                              ["Node.js", "React", "Flutter", "MQTT"],
+  "EduAI - Educational Platform":                   ["Python", "LangChain", "Flask", "PostgreSQL"],
+  "Resume Optimizer - AI Enhancement Tool":         ["Python", "NLP", "FastAPI", "React"],
+  "Big Data Analytics":                             ["Python", "Spark", "Kafka"],
+  "FixTrade - Trading Analytics":                   ["Python", "Pandas", "Flask"],
+  "BioFront - Biometric Frontend":                  ["JavaScript", "React", "Node.js"],
+  "Speed Alert - Real-Time Speed Monitoring":       ["Node.js", "React", "Flutter", "WebSockets", "AES", "GPS"],
 };
 
 const ACCENT_COLORS = ["#22d3ee", "#818cf8", "#34d399", "#fb923c", "#c084fc", "#f472b6"];
@@ -109,7 +109,7 @@ export default function Projects() {
 
                 {/* ── Always-visible action bar ── */}
                 <div
-                  className="flex items-center gap-2 pt-3 mt-1"
+                  className="flex items-center gap-2 pt-3 mt-1 flex-wrap"
                   style={{ borderTop: `1px solid ${accent}14` }}
                 >
                   {project.links.github && (
@@ -129,7 +129,47 @@ export default function Projects() {
                       }}
                     >
                       <GitHubSVG size={13} />
-                      View Code
+                      {project.links.github2 ? "Backend" : "View Code"}
+                    </a>
+                  )}
+                  {project.links.github2 && (
+                    <a
+                      href={project.links.github2}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex-1 justify-center"
+                      style={{ background: `${accent}10`, border: `1px solid ${accent}30`, color: accent }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = `${accent}22`;
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 14px ${accent}30`;
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = `${accent}10`;
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+                      }}
+                    >
+                      <GitHubSVG size={13} />
+                      Frontend
+                    </a>
+                  )}
+                  {project.links.github3 && (
+                    <a
+                      href={project.links.github3}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex-1 justify-center"
+                      style={{ background: `${accent}10`, border: `1px solid ${accent}30`, color: accent }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = `${accent}22`;
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 14px ${accent}30`;
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = `${accent}10`;
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+                      }}
+                    >
+                      <GitHubSVG size={13} />
+                      Mobile
                     </a>
                   )}
                   {project.links.demo && (
@@ -161,22 +201,3 @@ export default function Projects() {
     </Section>
   );
 }
-
-
-const projectImages: Record<string, string> = {
-  "EduAI - Educational Platform": "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "Resume Optimizer - AI Enhancement Tool": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "Big Data Analytics": "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "FixTrade - Trading Analytics": "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "BioFront - Biometric Frontend": "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "IoT Suite": "https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&w=800",
-};
-
-const projectTags: Record<string, string[]> = {
-  "EduAI - Educational Platform": ["Python", "LangChain", "Flask", "PostgreSQL"],
-  "Resume Optimizer - AI Enhancement Tool": ["Python", "NLP", "FastAPI", "React"],
-  "Big Data Analytics": ["Python", "Spark", "Kafka"],
-  "FixTrade - Trading Analytics": ["Python", "Pandas", "Flask"],
-  "BioFront - Biometric Frontend": ["JavaScript", "React", "Node.js"],
-  "IoT Suite": ["Node.js", "React", "Flutter", "MQTT"],
-};
