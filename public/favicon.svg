@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Dark background circle -->
+  <circle cx="32" cy="32" r="32" fill="#0a0f1e"/>
+
+  <!-- Cyan glow halo -->
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#06b6d4" stroke-width="1.2" opacity="0.4"/>
+
+  <!-- Body -->
+  <ellipse cx="32" cy="36" rx="8" ry="12" fill="#06b6d4" opacity="0.95"/>
+
+  <!-- Left wing — swept back, angular -->
+  <polygon points="32,32 6,44 14,30 28,28" fill="#0891b2"/>
+
+  <!-- Right wing — swept back, angular -->
+  <polygon points="32,32 58,44 50,30 36,28" fill="#0891b2"/>
+
+  <!-- Wing highlights -->
+  <polygon points="32,32 8,42 14,30" fill="#22d3ee" opacity="0.5"/>
+  <polygon points="32,32 56,42 50,30" fill="#22d3ee" opacity="0.5"/>
+
+  <!-- Tail feathers -->
+  <polygon points="28,46 32,58 36,46 32,50" fill="#0e7490"/>
+  <polygon points="30,47 27,56 32,58" fill="#06b6d4" opacity="0.6"/>
+  <polygon points="34,47 37,56 32,58" fill="#06b6d4" opacity="0.6"/>
+
+  <!-- Head -->
+  <ellipse cx="32" cy="24" rx="6" ry="6.5" fill="#06b6d4"/>
+
+  <!-- Falcon hood / crown streak -->
+  <polygon points="32,18 29,22 35,22" fill="#0e7490"/>
+
+  <!-- Beak -->
+  <polygon points="32,27 30,30 34,30 33,28" fill="#0e7490"/>
+  <polygon points="32,29 31,31 33,31" fill="#083344"/>
+
+  <!-- Eye -->
+  <circle cx="30" cy="23" r="1.8" fill="#083344"/>
+  <circle cx="30" cy="23" r="0.9" fill="#f0f9ff"/>
+  <circle cx="30.4" cy="22.6" r="0.4" fill="#083344"/>
+
+  <!-- Eye streak -->
+  <line x1="28" y1="23" x2="26" y2="24" stroke="#0e7490" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Talons -->
+  <line x1="30" y1="47" x2="27" y2="51" stroke="#0891b2" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="30" y1="47" x2="29" y2="52" stroke="#0891b2" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="34" y1="47" x2="37" y2="51" stroke="#0891b2" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="34" y1="47" x2="35" y2="52" stroke="#0891b2" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
