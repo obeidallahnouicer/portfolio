@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,8 +13,13 @@ import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Languages from "./components/Languages";
 import Contact from "./components/Contact";
+import GamePage from "./components/GamePage";
 
 export default function App() {
+  const [showGame, setShowGame] = useState(false);
+
+  if (showGame) return <GamePage onClose={() => setShowGame(false)} />;
+
   return (
     <div className="min-h-screen text-slate-300" style={{ backgroundColor: '#020b18' }}>
       {/* Ambient background glows */}
@@ -27,7 +33,7 @@ export default function App() {
         {/* Subtle grid */}
         <div className="absolute inset-0 bg-grid opacity-100" />
       </div>
-      <Navbar />
+      <Navbar onPlayGame={() => setShowGame(true)} />
       <main className="relative">
         <Hero />
         <About />
