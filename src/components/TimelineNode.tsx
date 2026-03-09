@@ -36,8 +36,8 @@ export default function TimelineNode({ data, index, isLast }: Readonly<TimelineN
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        <button
-          type="button"
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div
           className="w-full text-left p-5 rounded-2xl cursor-pointer transition-all duration-300"
           style={{
             background: "rgba(10,22,40,0.8)",
@@ -45,13 +45,14 @@ export default function TimelineNode({ data, index, isLast }: Readonly<TimelineN
             boxShadow: expanded ? `0 8px 32px ${accent}14` : "none",
           }}
           onClick={() => setExpanded(v => !v)}
+          onKeyDown={e => { if (e.key === "Enter" || e.key === " ") setExpanded(v => !v); }}
           onMouseEnter={e => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = `${accent}40`;
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 8px 32px ${accent}12`;
+            (e.currentTarget as HTMLDivElement).style.borderColor = `${accent}40`;
+            (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 32px ${accent}12`;
           }}
           onMouseLeave={e => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = `${accent}18`;
-            (e.currentTarget as HTMLButtonElement).style.boxShadow = expanded ? `0 8px 32px ${accent}14` : "none";
+            (e.currentTarget as HTMLDivElement).style.borderColor = `${accent}18`;
+            (e.currentTarget as HTMLDivElement).style.boxShadow = expanded ? `0 8px 32px ${accent}14` : "none";
           }}
         >
           <div className="flex items-start justify-between gap-2 mb-1">
@@ -132,7 +133,7 @@ export default function TimelineNode({ data, index, isLast }: Readonly<TimelineN
               </motion.div>
             </>
           )}
-        </button>
+        </div>
       </motion.div>
 
       {/* Center dot + line */}
