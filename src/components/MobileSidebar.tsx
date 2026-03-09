@@ -15,9 +15,10 @@ const NAV_ITEMS = [
 interface MobileSidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  onPlayGame?: () => void;
 }
 
-export default function MobileSidebar({ isOpen, onClose }: Readonly<MobileSidebarProps>) {
+export default function MobileSidebar({ isOpen, onClose, onPlayGame }: Readonly<MobileSidebarProps>) {
   // Lock body scroll when open
   useEffect(() => {
     if (isOpen) {
@@ -132,6 +133,21 @@ export default function MobileSidebar({ isOpen, onClose }: Readonly<MobileSideba
               className="px-5 py-5 flex-shrink-0"
               style={{ borderTop: "1px solid rgba(6,182,212,0.08)" }}
             >
+              {/* Pixel Game CTA */}
+              <button
+                onClick={() => { onClose(); onPlayGame?.(); }}
+                className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl text-sm font-semibold mb-4 transition-all duration-200 cursor-pointer"
+                style={{
+                  background: "linear-gradient(135deg, rgba(251,191,36,0.12), rgba(251,191,36,0.05))",
+                  border: "1px solid rgba(251,191,36,0.3)",
+                  color: "#fbbf24",
+                  fontFamily: "monospace",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                <span>▶</span> Play My Life Adventure
+              </button>
+
               <p className="text-xs" style={{ color: "#334155" }}>
                 AI Engineer &amp; Financial Analyst
               </p>
