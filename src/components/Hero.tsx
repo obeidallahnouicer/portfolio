@@ -1,6 +1,7 @@
 import { ArrowRight, Mail, MapPin, Phone, ChevronDown } from "lucide-react";
 import { GitHubSVG, LinkedInSVG } from "./BrandIcons";
-import { motion } from "motion/react";
+import { motion, useMotionValue, useTransform, useSpring } from "motion/react";
+import { useRef, type MouseEvent } from "react";
 import { PERSONAL_INFO } from "../constants";
 import HeroAnimation from "./HeroAnimation";
 import { assetUrl } from "../utils";
@@ -10,14 +11,101 @@ const stats = [
   { value: "5+", label: "Enterprise Projects" },
 ];
 
+// ── Animation variants ───────────────────────────────────────────────────────
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.11, delayChildren: 0.2 } },
 };
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] } },
+  hidden: { opacity: 0, y: 28, filter: "blur(4px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
 };
+
+// ── Parallax tilt avatar ─────────────────────────────────────────────────────
+function ParallaxAvatar() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+
+  // Spring-smooth the raw values
+  const springConfig = { stiffness: 120, damping: 20, mass: 0.8 };
+  const smoothX = useSpring(rawX, springConfig);
+  const smoothY = useSpring(rawY, springConfig);
+
+  // Map pointer offset → subtle rotation (max ±8 deg)
+  const rotateY = useTransform(smoothX, [-1, 1],  [-8, 8]);
+  const rotateX = useTransform(smoothY, [-1, 1],  [ 8, -8]);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    rawX.set((e.clientX - cx) / (rect.width  / 2));
+    rawY.set((e.clientY - cy) / (rect.height / 2));
+  };
+
+  const handleMouseLeave = () => {
+    rawX.set(0);
+    rawY.set(0);
+  };
+
+  return (
+    <div
+      ref={ref}
+      aria-hidden="true"
+      className="relative float"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ perspective: 600 }}
+    >
+      <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}>
+        {/* Outer glow ring */}
+        <div
+          className="absolute -inset-2 rounded-full opacity-50 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse, rgba(6,182,212,0.4) 0%, transparent 70%)",
+            filter: "blur(14px)",
+          }}
+        />
+        <div
+          className="w-32 h-32 rounded-full overflow-hidden glow-cyan relative"
+          style={{ border: "2px solid rgba(6,182,212,0.45)" }}
+        >
+          <img
+            src={assetUrl("/images/avatar/photo.jpg")}
+            alt="Obeid Allah Nouicer"
+            className="w-full h-full object-cover object-top"
+            onError={e => {
+              const img = e.currentTarget;
+              img.style.display = "none";
+              const parent = img.parentElement;
+              if (parent && !parent.querySelector(".avatar-fallback")) {
+                const fb = document.createElement("div");
+                fb.className =
+                  "avatar-fallback w-full h-full flex items-center justify-center text-3xl font-black";
+                fb.style.cssText =
+                  "background:linear-gradient(135deg,#06b6d4,#818cf8);color:#020b18;font-family:Syne,sans-serif;";
+                fb.textContent = "O";
+                parent.appendChild(fb);
+              }
+            }}
+          />
+        </div>
+        <span
+          className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 pulse-dot"
+          style={{ backgroundColor: "#22d3ee", borderColor: "#020b18" }}
+        />
+      </motion.div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -40,35 +128,9 @@ export default function Hero() {
         initial="hidden"
         animate="show"
       >
-        {/* Avatar */}
+        {/* Avatar with parallax tilt */}
         <motion.div className="flex justify-center mb-6" variants={fadeUp}>
-          <div className="relative float">
-            {/* Outer glow ring */}
-            <div
-              className="absolute -inset-2 rounded-full opacity-50 pointer-events-none"
-              style={{ background: "radial-gradient(ellipse, rgba(6,182,212,0.35) 0%, transparent 70%)", filter: "blur(12px)" }}
-            />
-            <div className="w-32 h-32 rounded-full overflow-hidden glow-cyan relative" style={{ border: "2px solid rgba(6,182,212,0.4)" }}>
-              <img
-                src={assetUrl("/images/avatar/photo.jpg")}
-                alt="Obeid Allah Nouicer"
-                className="w-full h-full object-cover object-top"
-                onError={e => {
-                  const img = e.currentTarget;
-                  img.style.display = "none";
-                  const parent = img.parentElement;
-                  if (parent && !parent.querySelector(".avatar-fallback")) {
-                    const fb = document.createElement("div");
-                    fb.className = "avatar-fallback w-full h-full flex items-center justify-center text-3xl font-black";
-                    fb.style.cssText = "background:linear-gradient(135deg,#06b6d4,#818cf8);color:#020b18;font-family:Syne,sans-serif;";
-                    fb.textContent = "O";
-                    parent.appendChild(fb);
-                  }
-                }}
-              />
-            </div>
-            <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 pulse-dot" style={{ backgroundColor: "#22d3ee", borderColor: "#020b18" }} />
-          </div>
+          <ParallaxAvatar />
         </motion.div>
 
         {/* Badge */}
