@@ -178,3 +178,16 @@
   background: rgba(6, 182, 212, 0.25);
   color: #f1f5f9;
 }
+
+/* ── Phaser game canvas centering ───────────────────────────
+   Phaser appends a <canvas> directly into the ref div.
+   We override any inline position Phaser may set so it always
+   sits centred inside its flex container.                    */
+#phaser-game-root canvas,
+#phaser-game-root > canvas {
+  display: block !important;
+  margin: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  image-rendering: pixelated;
+}
