@@ -12,7 +12,11 @@ const navItems = [
   { name: "Contact",    href: "#contact" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  onPlayGame?: () => void;
+}
+
+export default function Navbar({ onPlayGame }: Readonly<NavbarProps>) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -24,7 +28,7 @@ export default function Navbar() {
 
   return (
     <>
-      <MobileSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <MobileSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} onPlayGame={onPlayGame} />
 
       <nav
         className="sticky top-0 z-30 transition-all duration-300"
@@ -79,9 +83,33 @@ export default function Navbar() {
                   {item.name}
                 </a>
               ))}
+              {/* Pixel Game button */}
+              <button
+                onClick={onPlayGame}
+                className="ml-2 px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer"
+                title="Play my life as a pixel adventure!"
+                style={{
+                  background: "linear-gradient(135deg, rgba(251,191,36,0.12), rgba(251,191,36,0.06))",
+                  border: "1px solid rgba(251,191,36,0.35)",
+                  color: "#fbbf24",
+                  fontFamily: "monospace",
+                  letterSpacing: "0.04em",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, rgba(251,191,36,0.22), rgba(251,191,36,0.12))";
+                  e.currentTarget.style.boxShadow = "0 0 14px rgba(251,191,36,0.25)";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = "linear-gradient(135deg, rgba(251,191,36,0.12), rgba(251,191,36,0.06))";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <span style={{ fontSize: "13px" }}>▶</span> Play
+              </button>
+
               <a
                 href="#contact"
-                className="ml-3 px-4 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200"
+                className="ml-2 px-4 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200"
                 style={{
                   background: "linear-gradient(135deg, rgba(6,182,212,0.15), rgba(129,140,248,0.15))",
                   border: "1px solid rgba(6,182,212,0.3)",
